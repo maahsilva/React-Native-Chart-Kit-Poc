@@ -1,20 +1,25 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import DeliveriedGraph from './src/components/DeliveriedGraph';
+import BranchGraph from './src/components/BranchGraph';
+import { View } from 'react-native'
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+
+   const chartConfig= {
+    backgroundColor: "#e26a00",
+    backgroundGradientFrom: "#fb8c00",
+    backgroundGradientTo: "#ffa726",
+    backgroundGradientToOpacity: 0.5,
+    color: (opacity= 1) => `rgba(5, 5, 5, ${opacity})`,
+    strokeWidth: 3,
+    barPercentage: 0.5,
+    useShadowColorFromDataset: false
+  }
+    return (
+      <View>
+        <DeliveriedGraph chartConfig={chartConfig}/>
+        <BranchGraph chartConfig={chartConfig}/> 
+      </View>
+
+    );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
